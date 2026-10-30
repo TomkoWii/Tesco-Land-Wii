@@ -461,3 +461,5 @@ int main(void) {
         }
 
         GX_DrawDone();
+
+    }
