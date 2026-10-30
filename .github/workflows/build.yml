@@ -9,13 +9,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Wii libraries
-        run: dkp-pacman -Syu --noconfirm wii-dev
+        run: |
+          if [ -d /opt/devkitpro/libogc ]; then
+            echo "libogc already present"
+          else
+            for i in 1 2 3 4; do
+              dkp-pacman -Sy --noconfirm wii-dev && break
+              echo "retry $i"; sleep 10
+            done
+          fi
       - name: Build
         run: make
       - name: Package
         run: |
           mkdir -p out/apps/tescoland
-          cp boot.dol meta.xml out/apps/tescoland/
+          cp boot.dol meta.xml icon.png out/apps/tescoland/
       - uses: actions/upload-artifact@v4
         with:
           name: tescoland
