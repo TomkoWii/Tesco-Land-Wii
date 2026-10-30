@@ -460,6 +460,7 @@ int main(void) {
             if (msgt > 0) { msgt--; label(30, 380, 3, msg, 255, 230, 60); }
         }
 
-        GX_DrawDone();
+                GX_DrawDone();
 
     }
+}
