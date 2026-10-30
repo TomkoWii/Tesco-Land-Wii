@@ -1,3 +1,4 @@
+#include <time.h>
 // Tesco Land - 3D tycoon pre Wii (libogc + GX + ASND). Fan hra, bez loga a bez povodnej hudby.
 #include <stdio.h>
 #include <stdlib.h>
@@ -362,7 +363,7 @@ int main(void) {
     s16 *jing_s = make_sfx(f5, m5, 4, 0, 0.25f, &jb);
     ASND_Pause(0);
 
-    srand((unsigned)gettime());
+    srand((unsigned)time(NULL));
     s16 *cur = menu_s;
     int curb = mb;
     int state = 0, money = 120, earned = 0, served = 0, sel = 0, cx = 3, cz = 3;
@@ -459,4 +460,4 @@ int main(void) {
             if (msgt > 0) { msgt--; label(30, 380, 3, msg, 255, 230, 60); }
         }
 
-        GX_DrawDone()
+        GX_DrawDone();
